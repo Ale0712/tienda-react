@@ -1,16 +1,24 @@
 import React from "react";
-import "./App.css";
-import Navbar from "./Components/Navbar/Navbar";
-import { ItemListContainer } from "./Components/ItemListContainer/ItemListContainer";
+import { Header } from "./components/Header";
+import { Carrito } from "./components/Carrito";
+import { DataProvider } from "./context/DataProvider";
+import { BrowserRouter as Router } from "react-router-dom";
+//import { Page } from "./components/Page";
+import "boxicons";
+import { ProductosList } from "./components/page/productos";
 
-const app = () => {
-  const mensaje = "Hola como estas ?";
-
+function App() {
   return (
-    <>
-      <Navbar />
-      <ItemListContainer greeting={mensaje} mensaje="Que buscas ?" />
-    </>
+    <DataProvider>
+      <div className="App">
+        <Router>
+          <Header />
+          <Carrito />
+          <ProductosList />
+        </Router>
+      </div>
+    </DataProvider>
   );
-};
-export default app;
+}
+
+export default App;
